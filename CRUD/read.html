@@ -1,0 +1,40 @@
+<!-- 页面结构 -->
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>姓名</th>
+            <th>操作</th>
+        </tr>
+    </thead>
+    <tbody id="userTable"></tbody>
+</table>
+
+<script>
+    // 页面加载时读取数据（Read）
+    async function loadUsers() {
+        try {
+            // 发送GET请求获取数据
+            const response = await fetch('/api/users');
+            const users = await response.json();
+
+            // 渲染到表格
+            const tableBody = document.getElementById('userTable');
+            tableBody.innerHTML = users.map(user => `
+      <tr>
+        <td>${user.id}</td>
+        <td>${user.name}</td>
+        <td>
+          <button onclick="editUser(${user.id})">编辑</button>
+          <button onclick="deleteUser(${user.id})">删除</button>
+        </td>
+      </tr>
+    `).join('');
+        } catch (error) {
+            console.error('加载失败:', error);
+        }
+    }
+
+    // 页面加载完成后执行
+    window.onload = loadUsers;
+</script>

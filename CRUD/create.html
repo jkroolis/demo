@@ -1,0 +1,32 @@
+<!-- 页面结构 -->
+<input type="text" id="todoInput" placeholder="请输入待办">
+<button onclick="addTodo()">添加</button>
+<ul id="todoList"></ul>
+
+<script>
+    // 新增待办（Create）
+    async function addTodo() {
+        const input = document.getElementById('todoInput');
+        const content = input.value.trim();
+
+        if (!content) return alert('请输入内容');
+
+        try {
+            // 发送POST请求保存新数据
+            const response = await fetch('/api/todos', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ content, completed: false })
+            });
+
+            if (response.ok) {
+                const newTodo = await response.json();
+                // 新增后刷新列表（重新渲染）
+                renderTodoList();
+                input.value = ''; // 清空输入框
+            }
+        } catch (error) {
+            console.error('添加失败:', error);
+        }
+    }
+</script>

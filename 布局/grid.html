@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grid布局基础示例</title>
+    <style>
+        /* 基础样式 */
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+
+        .intro {
+            max-width: 800px;
+            margin: 0 auto 30px;
+            padding: 15px;
+            background: #f0f0f0;
+            border-radius: 6px;
+        }
+
+        /* Grid容器样式 */
+        .grid-container {
+            /* 1. 启用Grid布局 */
+            display: grid;
+
+            /* 2. 定义列：3列，宽度分别为100px、自适应、200px */
+            grid-template-columns: 100px 1fr 200px;
+
+            /* 3. 定义行：2行，高度分别为80px、自适应 */
+            grid-template-rows: 80px 1fr;
+
+            /* 4. 行列间距：行间距10px，列间距15px */
+            gap: 10px 15px;
+
+            /* 容器样式 */
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #e9f5ff;
+            border: 2px solid #4a90e2;
+            border-radius: 8px;
+            min-height: 300px;
+        }
+
+        /* Grid项目样式 */
+        .grid-item {
+            color: white;
+            font-size: 18px;
+            padding: 10px;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* 不同项目的背景色 */
+        .item1 {
+            background: #ff5252;
+        }
+
+        .item2 {
+            background: #ff9800;
+        }
+
+        .item3 {
+            background: #4caf50;
+        }
+
+        .item4 {
+            background: #2196f3;
+        }
+
+        .item5 {
+            background: #9c27b0;
+        }
+
+        .item6 {
+            background: #e91e63;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="intro">
+        <h2>Grid布局基础示例</h2>
+        <p>这个示例展示了Grid布局的核心概念：</p>
+        <ul>
+            <li>3列（宽度：100px、自适应(1fr)、200px）</li>
+            <li>2行（高度：80px、自适应(1fr)）</li>
+            <li>项目之间有间距（行10px，列15px）</li>
+            <li>共6个项目，自动填充网格</li>
+        </ul>
+    </div>
+
+    <!-- Grid容器 -->
+    <div class="grid-container">
+        <!-- Grid项目 -->
+        <div class="grid-item item1">项目1</div>
+        <div class="grid-item item2">项目2</div>
+        <div class="grid-item item3">项目3</div>
+        <div class="grid-item item4">项目4</div>
+        <div class="grid-item item5">项目5</div>
+        <div class="grid-item item6">项目6</div>
+    </div>
+</body>
+
+</html>

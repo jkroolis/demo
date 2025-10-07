@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>优化后的Flex布局示例</title>
+    <style>
+        /* 容器通用样式 */
+        .demo-container {
+            width: 90%;
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            border: 2px solid #333;
+            border-radius: 8px;
+        }
+
+        /* Flex容器基础样式（提取重复的通用属性） */
+        .flex-base {
+            display: flex;
+            gap: 10px;
+            padding: 10px;
+            background: #f5f5f5;
+        }
+
+        /* Flex项目通用样式 */
+        .flex-item {
+            width: 100px;
+            height: 100px;
+            color: white;
+            font-size: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* 项目颜色类（复用不同颜色） */
+        .color1 {
+            background: #ff4444;
+        }
+
+        .color2 {
+            background: #ffbb33;
+        }
+
+        .color3 {
+            background: #00C851;
+        }
+
+        .color4 {
+            background: #33b5e5;
+        }
+    </style>
+</head>
+
+<body>
+    <h2 style="text-align: center;">优化后的Flex布局示例</h2>
+    <p style="text-align: center; color: #666;">重复样式已提取为类选择器，减少代码冗余</p>
+
+    <!-- 1. 默认Flex布局 -->
+    <div class="demo-container">
+        <h3>1. 默认布局（项目水平排列）</h3>
+        <!-- 只添加差异化样式：min-height -->
+        <div class="flex-base" style="min-height: 120px;">
+            <div class="flex-item color1">1</div>
+            <div class="flex-item color2">2</div>
+            <div class="flex-item color3">3</div>
+            <div class="flex-item color4">4</div>
+        </div>
+        <p>容器样式：.flex-base（基础Flex样式） + min-height: 120px</p>
+    </div>
+
+    <!-- 2. 主轴居中对齐 -->
+    <div class="demo-container">
+        <h3>2. 项目在主轴居中</h3>
+        <!-- 只添加差异化样式：justify-content + min-height -->
+        <div class="flex-base" style="justify-content: center; min-height: 120px;">
+            <div class="flex-item color1">1</div>
+            <div class="flex-item color2">2</div>
+            <div class="flex-item color3">3</div>
+        </div>
+        <p>容器样式：.flex-base + justify-content: center</p>
+    </div>
+
+    <!-- 3. 交叉轴居中对齐 -->
+    <div class="demo-container">
+        <h3>3. 项目在交叉轴居中</h3>
+        <!-- 只添加差异化样式：align-items + 更大的min-height -->
+        <div class="flex-base" style="align-items: center; min-height: 180px;">
+            <div class="flex-item color1">1</div>
+            <div class="flex-item color2">2</div>
+            <div class="flex-item color3">3</div>
+        </div>
+        <p>容器样式：.flex-base + align-items: center</p>
+    </div>
+
+    <!-- 4. 项目换行 -->
+    <div class="demo-container">
+        <h3>4. 项目自动换行</h3>
+        <!-- 只添加差异化样式：flex-wrap -->
+        <div class="flex-base" style="flex-wrap: wrap;">
+            <div class="flex-item color1">1</div>
+            <div class="flex-item color2">2</div>
+            <div class="flex-item color3">3</div>
+            <div class="flex-item color4">4</div>
+            <div class="flex-item color1">5</div>
+            <div class="flex-item color2">6</div>
+        </div>
+        <p>容器样式：.flex-base + flex-wrap: wrap</p>
+    </div>
+</body>
+
+</html>

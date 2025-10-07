@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>清晰的margin和padding对比示例</title>
+    <style>
+        /* 页面基础样式 */
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+        }
+
+        /* 外部大容器 */
+        .outer-container {
+            width: 800px;
+            margin: 50px auto;
+            padding: 30px;
+            background: #f9f9f9;
+            border: 1px solid #eee;
+        }
+
+        /* 演示盒子的父容器 - 用于显示margin的区域 */
+        .parent-box {
+            background: #e3f2fd;
+            /* 浅蓝色：用于显示子元素的margin区域 */
+            border: 1px dashed #90caf9;
+            padding: 100px;
+            /* 给margin留出足够显示空间 */
+            margin-bottom: 100px;
+        }
+
+        /* 演示盒子基础样式 */
+        .demo-box {
+            width: 200px;
+            height: 100px;
+            font-weight: bold;
+            text-align: center;
+            line-height: 100px;
+            color: white;
+            transition: all 0.3s ease;
+            /* 过渡动画，方便观察变化 */
+        }
+
+        /* 1. 仅margin示例 */
+        .margin-demo {
+            background: #2196f4;
+            /* 深蓝色：盒子本身 */
+            border: 2px solid #1565c0;
+            /* 深蓝色边框：区分盒子边界 */
+
+            /* 明显的margin值 */
+            margin: 40px 30px 50px 20px;
+        }
+
+        /* 2. 仅padding示例 */
+        .padding-demo {
+            background: #4caf50;
+            /* 绿色：盒子本身（包含padding区域） */
+            border: 2px solid #2e7d32;
+            /* 绿色边框：区分盒子边界 */
+
+            /* 明显的padding值 */
+            padding: 40px 30px 50px 20px;
+        }
+
+        /* 3. 同时展示margin和padding */
+        .combined-demo {
+            background: #ff9800;
+            /* 橙色：盒子本身（包含padding区域） */
+            border: 2px solid #e65100;
+            /* 深橙色边框：区分盒子边界 */
+
+            /* 同时设置明显的margin和padding */
+            margin: 30px;
+            padding: 30px;
+        }
+
+        /* 辅助说明样式 */
+        .explanation {
+            margin: 20px 0;
+            padding: 15px;
+            background: #fff8e1;
+            border-left: 4px solid #ffc107;
+        }
+
+        .highlight {
+            padding: 2px 5px;
+            border-radius: 3px;
+            font-weight: bold;
+        }
+
+        .highlight-margin {
+            background: #bbdefb;
+            color: #0d47a1;
+        }
+
+        .highlight-padding {
+            background: #c8e6c9;
+            color: #1b5e20;
+        }
+
+        /* 交互提示 */
+        .hint {
+            color: #666;
+            font-size: 14px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="outer-container">
+        <h2>margin 和 padding 直观对比</h2>
+        <p>通过颜色区分不同区域，建议打开浏览器开发者工具（F12）观察元素盒模型</p>
+
+        <!-- 1. 仅margin示例 -->
+        <div>
+            <h3>示例1：仅设置 margin（外边距）</h3>
+            <div class="explanation">
+                <strong class="highlight highlight-margin">margin</strong>
+                是盒子<strong>外部</strong>的空间，在浅蓝色背景区域内，边框（深蓝光晕）外的部分都是margin
+            </div>
+
+            <!-- 浅蓝色背景用于显示margin区域 -->
+            <div class="parent-box">
+                <div class="demo-box margin-demo">我有margin</div>
+            </div>
+
+            <p class="hint">👉 观察：深蓝色盒子（带深蓝光晕边框）周围的浅蓝色区域就是margin，它不属于盒子本身</p>
+        </div>
+
+        <!-- 2. 仅padding示例 -->
+        <div>
+            <h3>示例2：仅设置 padding（内边距）</h3>
+            <div class="explanation">
+                <strong class="highlight highlight-padding">padding</strong>
+                是盒子<strong>内部</strong>的空间，绿色区域（包含边框内的所有绿色部分）都属于盒子本身，文字与边框的距离就是padding
+            </div>
+
+            <div class="demo-box padding-demo">我有padding</div>
+
+            <p class="hint">👉 观察：文字"我有padding"与绿色边框的距离就是padding，它属于盒子的一部分，会增加盒子总大小</p>
+        </div>
+
+        <!-- 3. 同时设置margin和padding -->
+        <div>
+            <h3>示例3：同时设置 margin 和 padding</h3>
+            <div class="explanation">
+                橙色区域（含边框内橙色部分）是盒子本身（包含padding），橙色盒子与外部浅蓝色背景的距离是margin
+            </div>
+
+            <div class="parent-box">
+                <div class="demo-box combined-demo">我都有</div>
+            </div>
+
+            <p class="hint">👉 观察：橙色盒子内部文字与边框的距离是padding，橙色盒子与浅蓝色背景的距离是margin</p>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,32 @@
+<!-- 页面结构 -->
+<div id="cart"></div>
+
+<script>
+    // 渲染购物车列表（Read）
+    function renderCart(products) {
+        const cartEl = document.getElementById('cart');
+        cartEl.innerHTML = products.map(product => `
+    <div class="product">
+      <span>${product.name}</span>
+      <button onclick="deleteProduct(${product.id})">删除</button>
+    </div>
+  `).join('');
+    }
+
+    // 删除商品（Delete）
+    async function deleteProduct(id) {
+        if (!confirm('确定要删除吗？')) return;
+
+        try {
+            // 发送DELETE请求
+            await fetch(`/api/cart/${id}`, { method: 'DELETE' });
+
+            // 重新获取最新购物车数据并渲染
+            const response = await fetch('/api/cart');
+            const newCart = await response.json();
+            renderCart(newCart);
+        } catch (error) {
+            console.error('删除失败:', error);
+        }
+    }
+</script>

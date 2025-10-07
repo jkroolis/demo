@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .parent {
+            /* 外边距100px */
+            margin: 100px;
+            width: 400px;
+            height: 400px;
+            background: pink;
+            padding: 20px, 40px;
+            /* flex布局 */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: auto;
+
+        }
+
+        .child {
+            background: blue;
+            width: 100px;
+            height: 100px;
+
+            display: flex;
+            justify-content: center;
+            align-items: 50%;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 基础盒子 -->
+    <div class="parent">
+        <!-- div内是内间距pading，div与div之间是外间距 margin-->
+        <div class="child">hello</div>
+    </div>
+
+    <div>
+        <input type="checkbox" checked>, <input type="radio">
+        <a href="https://www.example.com" target="_blank">Open in new tab</a>
+
+        <table border="1">
+            <tr>
+                <td>Row 1, cell 1</td>
+                <td>Row 1, cell 2</td>
+            </tr>
+        </table>
+    </div>
+</body>
+
+</html>
